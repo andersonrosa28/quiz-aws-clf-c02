@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz AWS Cloud Practitioner</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+      margin: 0;
+      padding: 30px;
+    }
+    .quiz-container {
+      background: white;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .options button {
+      display: block;
+      margin: 8px 0;
+      padding: 12px 18px;
+      width: 100%;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      background: #f2f4f7;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+    .options button:hover {
+      background-color: #e0e7ff;
+    }
+    .options button.correct {
+      background-color: #d1fae5;
+      border-color: #10b981;
+    }
+    .options button.incorrect {
+      background-color: #fee2e2;
+      border-color: #ef4444;
+    }
+    .options button.selected {
+      border: 2px solid #6366f1;
+      background-color: #e0e7ff;
+    }
+    .progress {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+      color: #374151;
+    }
+    .nav-buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .nav-buttons button {
+      padding: 10px 25px;
+      margin: 0 10px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      background: #6366f1;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .nav-buttons button:disabled {
+      background: #d1d5db;
+      cursor: not-allowed;
+    }
+    .nav-buttons button:hover:not(:disabled) {
+      background: #4f46e5;
+    }
+    .explanation {
+      margin-top: 20px;
+      background: #f9fafb;
+      padding: 15px;
+      border-left: 4px solid #6366f1;
+      border-radius: 5px;
+      color: #374151;
+      font-size: 14px;
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #e5e7eb;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 20px;
+      margin: 10px 0 30px;
+    }
+    .progress-fill {
+      height: 100%;
+      background-color: #6366f1;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .quiz-container {
+      background: white;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+    .nav-buttons {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .nav-buttons button {
+      padding: 10px 25px;
+      margin: 0 10px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      background: #6366f1;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .nav-buttons button:hover:not(:disabled) {
+      background: #4f46e5;
+    }
+    .domain-section {
+      background: #f3f4f6;
+      border-left: 5px solid #6366f1;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .domain-section h4 {
+      margin: 0 0 5px;
+      color: #374151;
+    }
+    .domain-section p {
+      margin: 0;
+      color: #4b5563;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container" id="quiz">
+    <div style="max-width: 800px; margin: 40px auto;">
+        <button onclick="toggleAccordion()" style="width: 100%; padding: 15px; background-color: #f0f0f0; border: none; border-radius: 10px; text-align: left; font-size: 16px; cursor: pointer;">
+          ℹ️ Informações sobre o conteúdo e a pontuação do quiz
+        </button>
+        <div id="accordionContent" style="display: none; padding: 20px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 10px 10px; background-color: #f9f9f9;">
+          <p>Este quiz foi gerado com auxílio do ChatGPT com base no guia oficial da certificação AWS Cloud Practitioner (CLF-C02). Pode conter imprecisões e deve ser usado apenas como material de estudo.</p>
+      
+          <h4 style="margin-top: 20px; color: #333;">📊 Como a pontuação do quiz é calculada</h4>
+          <p>Cada pergunta tem um peso baseado no número de questões reais de cada domínio na prova oficial. A distribuição é:</p>
+          <ul>
+            <li><strong>Domínio 1 (Fundamentos da Nuvem AWS):</strong> 16 questões × 1.54 pontos</li>
+            <li><strong>Domínio 2 (Segurança e Conformidade):</strong> 20 questões × 1.54 pontos</li>
+            <li><strong>Domínio 3 (Serviços da AWS):</strong> 22 questões × 1.55 pontos</li>
+            <li><strong>Domínio 4 (Faturamento e Preços):</strong> 7 questões × 1.71 pontos</li>
+          </ul>
+          <p>Totalizando exatamente <strong>100 pontos</strong>. A tela final mostrará sua pontuação geral e por domínio.</p>
+          <p style="font-size: 13px; color: #999;"><em>Este simulador é apenas para fins educacionais e não representa a pontuação oficial da AWS.</em></p>
+        </div>
+      </div>
+      
+
+    <h2 style="text-align:center">AWS Cloud Practitioner Quiz</h2>
+    <p>Este quiz é baseado no guia oficial da certificação <strong><a href="https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf" target="_blank">AWS Certified Cloud Practitioner</a></strong>. 
+        O objetivo é testar seus conhecimentos nos principais <strong>domínios cobrados na prova</strong>, com explicações após cada resposta.<br><br>
+      
+    Veja abaixo os domínios abordados:</p>
+
+    <div class="domain-section">
+      <h4>📘 Domínio 1: Conceitos de Nuvem (24%)</h4>
+      <p>Princípios da computação em nuvem, modelos de implantação, benefícios e características como escalabilidade, elasticidade e alta disponibilidade.</p>
+    </div>
+
+    <div class="domain-section">
+      <h4>🔐 Domínio 2: Segurança e Conformidade na Nuvem (30%)</h4>
+      <p>Recursos de segurança, IAM, criptografia, responsabilidade compartilhada e ferramentas como CloudTrail, KMS e WAF.</p>
+    </div>
+
+    <div class="domain-section">
+      <h4>🛠️ Domínio 3: Tecnologia da Nuvem e Serviços da AWS (34%)</h4>
+      <p>Serviços essenciais como EC2, S3, RDS, Lambda, VPC, CloudWatch, auto scaling, containers e práticas de arquitetura em nuvem.</p>
+    </div>
+
+    <div class="domain-section">
+      <h4>💰 Domínio 4: Faturamento, Preços e Suporte (12%)</h4>
+      <p>Ferramentas para estimativa de custos, planos de suporte, modelos de pagamento e boas práticas de controle de gastos na AWS.</p>
+    </div>
+
+    <p style="margin-top: 30px">Ao final do quiz, você verá sua pontuação total (0 a 1000) e explicações sobre as perguntas incorretas.<br><br>Boa sorte! 🚀</p>
+    
+    <div class="nav-buttons">
+      <button onclick="startQuiz()">Iniciar Quiz</button>
+    </div>
+  </div>
+  <script>
+   const questionsRaw = [
+  {
+    question: "Qual é a definição de escalabilidade horizontal na AWS?",
+    options: [
+      "Aumentar o tamanho de uma instância existente",
+      "Adicionar novas instâncias para distribuir a carga",
+      "Reduzir a latência da rede",
+      "Substituir instâncias EC2 por Lambda"
+    ],
+    answer: 1,
+    explanation: "Escalabilidade horizontal significa adicionar novas instâncias para lidar com aumento de carga.",
+    domain: 1
+  },
+  {
+    question: "Como a AWS proporciona economia de escala?",
+    options: [
+      "Descontos por uso antecipado de instâncias",
+      "Redução de custos à medida que o volume de uso aumenta",
+      "Contratos de longo prazo com pagamento fixo",
+      "Migração automática entre regiões"
+    ],
+    answer: 1,
+    explanation: "Na AWS, o custo por unidade diminui conforme o uso aumenta, gerando economia de escala.",
+    domain: 1
+  },
+  {
+    question: "O que caracteriza um ambiente com alta disponibilidade na nuvem?",
+    options: [
+      "Armazenamento local de dados críticos",
+      "Replicação e redundância entre zonas de disponibilidade",
+      "Restrições geográficas para acesso",
+      "Necessidade de licenças locais"
+    ],
+    answer: 1,
+    explanation: "Alta disponibilidade usa múltiplas zonas para garantir acesso contínuo mesmo com falhas.",
+    domain: 1
+  },
+  {
+    question: "Qual é uma das principais vantagens da computação em nuvem sobre a infraestrutura local tradicional?",
+    options: [
+      "Atualizações manuais frequentes",
+      "Instalação física de servidores",
+      "Recursos sob demanda e escaláveis",
+      "Necessidade de grandes investimentos iniciais"
+    ],
+    answer: 2,
+    explanation: "A nuvem permite escalar sob demanda, sem investimento inicial em hardware.",
+    domain: 1
+  },
+  {
+    question: "Como a AWS oferece flexibilidade tecnológica para os clientes?",
+    options: [
+      "Limitando a escolha de sistema operacional",
+      "Suportando apenas linguagens padrão da AWS",
+      "Permitindo uso de diferentes ferramentas e sistemas operacionais",
+      "Impedindo a integração com serviços externos"
+    ],
+    answer: 2,
+    explanation: "A AWS permite que os clientes escolham linguagens, sistemas operacionais e bancos de dados.",
+    domain: 1
+  },
+  {
+    question: "Qual exemplo representa agilidade com uso da nuvem?",
+    options: [
+      "Esperar semanas para instalar servidores físicos",
+      "Iniciar um ambiente completo em minutos",
+      "Configurar servidores manualmente",
+      "Criar contratos fixos de infraestrutura"
+    ],
+    answer: 1,
+    explanation: "A nuvem permite lançar novos recursos rapidamente, promovendo agilidade.",
+    domain: 1
+  },
+  {
+    question: "Por que clientes globais se beneficiam de múltiplas regiões da AWS?",
+    options: [
+      "Backup automático",
+      "Redução de custos com licenças",
+      "Menor latência para usuários em diferentes localizações",
+      "Aumento da capacidade computacional local"
+    ],
+    answer: 2,
+    explanation: "O uso de múltiplas regiões reduz a latência para usuários distribuídos globalmente.",
+    domain: 1
+  },
+  {
+    question: "Qual pilar do AWS Well-Architected está diretamente ligado à recuperação de falhas?",
+    options: [
+      "Excelência Operacional",
+      "Confiabilidade",
+      "Segurança",
+      "Eficiência de Performance"
+    ],
+    answer: 1,
+    explanation: "O pilar de Confiabilidade foca na tolerância a falhas e recuperação rápida.",
+    domain: 1
+  },
+  {
+    question: "O que significa elasticidade na AWS?",
+    options: [
+      "Contratos fixos de capacidade",
+      "Ajuste automático de recursos conforme demanda",
+      "Monitoramento manual de servidores",
+      "Previsibilidade de custos fixos"
+    ],
+    answer: 1,
+    explanation: "Elasticidade permite aumentar ou reduzir recursos automaticamente com base na demanda.",
+    domain: 1
+  },
+  {
+    question: "O que define o modelo de responsabilidade compartilhada da AWS?",
+    options: [
+      "Cliente cuida de tudo, inclusive da infraestrutura",
+      "AWS cuida da segurança na nuvem; o cliente da segurança dentro da nuvem",
+      "AWS gerencia os dados dos clientes",
+      "Cliente recebe suporte total para qualquer problema"
+    ],
+    answer: 1,
+    explanation: "A AWS protege a infraestrutura e o cliente é responsável pela configuração segura dos serviços.",
+    domain: 1
+  },
+  {
+    question: "O que significa 'pagamento sob demanda' na AWS?",
+    options: [
+      "Cobrança fixa mensal",
+      "Pagamento antecipado por recursos futuros",
+      "Pagar apenas pelos recursos usados, quando usados",
+      "Licença anual com suporte incluso"
+    ],
+    answer: 2,
+    explanation: "O modelo sob demanda permite pagar apenas pelos recursos usados, sem contratos antecipados.",
+    domain: 1
+  },
+  {
+    question: "Quais são os principais modelos de implantação em nuvem?",
+    options: [
+      "Privado, Público e Híbrido",
+      "Físico, Virtualizado e Containerizado",
+      "DevOps, Agile e Waterfall",
+      "Amazon, Google e Microsoft"
+    ],
+    answer: 0,
+    explanation: "Os principais modelos de implantação são: Nuvem Pública, Privada e Híbrida.",
+    domain: 1
+  },
+  {
+    question: "O que significa resiliência na computação em nuvem?",
+    options: [
+      "Capacidade de responder automaticamente a alertas",
+      "Capacidade de se recuperar rapidamente após falhas",
+      "Capacidade de armazenar backups locais",
+      "Capacidade de usar software proprietário"
+    ],
+    answer: 1,
+    explanation: "Resiliência é a habilidade de um sistema se recuperar de falhas e continuar operando.",
+    domain: 1
+  },
+  {
+    question: "Qual das opções é uma característica essencial da computação em nuvem?",
+    options: [
+      "Dependência de hardware físico local",
+      "Provisionamento lento e manual",
+      "Capacidade elástica sob demanda",
+      "Acesso limitado baseado em localidade"
+    ],
+    answer: 2,
+    explanation: "Elasticidade sob demanda é uma das características fundamentais da computação em nuvem.",
+    domain: 1
+  },
+  {
+    question: "O que caracteriza a escalabilidade na AWS?",
+    options: [
+      "Execução contínua de backups",
+      "Capacidade de aumentar recursos automaticamente conforme necessidade",
+      "Armazenamento manual de logs",
+      "Conexão direta com instâncias físicas"
+    ],
+    answer: 1,
+    explanation: "Escalabilidade é a capacidade de crescer conforme a demanda, mantendo a performance.",
+    domain: 1
+  },
+  {
+    question: "Qual é a principal vantagem de usar a AWS ao invés de um datacenter tradicional?",
+    options: [
+      "Infraestrutura gerenciada pelo cliente",
+      "Escalabilidade limitada",
+      "Custo sob uso e acesso global rápido",
+      "Capacidade de manutenção física"
+    ],
+    answer: 2,
+    explanation: "A nuvem permite acesso global, escalabilidade e pagamento apenas pelo uso real.",
+    domain: 1
+  },
+  {
+    question: "Qual serviço da AWS registra todas as chamadas de API para fins de auditoria?",
+    options: ["IAM", "CloudTrail", "KMS", "S3"],
+    answer: 1,
+    explanation: "O AWS CloudTrail monitora e registra todas as ações realizadas por meio da API da AWS.",
+    domain: 2
+  },
+  {
+    question: "O que é uma política no AWS IAM?",
+    options: [
+      "Script de backup automatizado",
+      "Documento JSON que define permissões",
+      "Arquivo de log de rede",
+      "Grupo de usuários com tags"
+    ],
+    answer: 1,
+    explanation: "Políticas no IAM são documentos JSON usados para definir permissões de acesso.",
+    domain: 2
+  },
+  {
+    question: "Qual a principal função de um grupo no IAM?",
+    options: [
+      "Organizar buckets S3",
+      "Reunir instâncias EC2",
+      "Aplicar permissões a vários usuários de forma centralizada",
+      "Executar scripts agendados"
+    ],
+    answer: 2,
+    explanation: "Grupos IAM permitem aplicar políticas a vários usuários ao mesmo tempo.",
+    domain: 2
+  },
+  {
+    question: "Qual é um exemplo de controle de segurança lógico?",
+    options: [
+      "Trancas nas portas dos datacenters",
+      "Controle de temperatura",
+      "Política de senha forte para usuários",
+      "Monitoramento de umidade do ambiente"
+    ],
+    answer: 2,
+    explanation: "Controles lógicos envolvem medidas como autenticação e configuração de permissões.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço permite armazenar e rotacionar segredos com segurança?",
+    options: ["KMS", "Secrets Manager", "CloudTrail", "Config"],
+    answer: 1,
+    explanation: "O Secrets Manager permite armazenar, acessar e rotacionar senhas e chaves de API com segurança.",
+    domain: 2
+  },
+  {
+    question: "Para que serve o AWS Config?",
+    options: [
+      "Auditar configurações e alterações em recursos",
+      "Gerenciar clusters de containers",
+      "Enviar notificações por SMS",
+      "Executar backups automáticos"
+    ],
+    answer: 0,
+    explanation: "O AWS Config permite rastrear alterações e auditoria na configuração de recursos AWS.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço detecta comportamentos suspeitos ou anomalias de segurança?",
+    options: ["Inspector", "KMS", "GuardDuty", "IAM Analyzer"],
+    answer: 2,
+    explanation: "O GuardDuty usa machine learning para identificar atividades potencialmente maliciosas.",
+    domain: 2
+  },
+  {
+    question: "O que o AWS WAF protege?",
+    options: [
+      "Transferência de arquivos entre buckets",
+      "Serviços de autenticação",
+      "Aplicações web contra ataques como SQL Injection",
+      "Gerenciamento de instâncias EC2"
+    ],
+    answer: 2,
+    explanation: "O WAF (Web Application Firewall) protege contra ameaças em aplicações web.",
+    domain: 2
+  },
+  {
+    question: "Quando devo usar uma IAM Role em vez de um usuário IAM?",
+    options: [
+      "Quando quiser conceder acesso temporário a recursos",
+      "Para criar contas de email",
+      "Para acessar o console da AWS como root",
+      "Para monitorar métricas de rede"
+    ],
+    answer: 0,
+    explanation: "Roles são ideais para conceder permissões temporárias com base em políticas definidas.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço fornece certificados SSL/TLS gratuitos e gerenciados?",
+    options: ["S3", "IAM", "Route 53", "ACM"],
+    answer: 3,
+    explanation: "O AWS Certificate Manager (ACM) gerencia certificados SSL para uso em seus serviços.",
+    domain: 2
+  },
+  {
+    question: "O que define o modelo de responsabilidade compartilhada da AWS?",
+    options: [
+      "O cliente gerencia tudo, incluindo data centers",
+      "A AWS é responsável pela segurança dos dados dos clientes",
+      "A AWS gerencia a infraestrutura e o cliente gerencia o que é implantado nela",
+      "O cliente não tem responsabilidade sobre segurança na nuvem"
+    ],
+    answer: 2,
+    explanation: "No modelo de responsabilidade compartilhada, a AWS protege a infraestrutura e o cliente configura e protege seus próprios dados e serviços.",
+    domain: 2
+  },
+  {
+    question: "Como reforçar a segurança no login ao Console da AWS?",
+    options: ["Ativando o MFA", "Usando o S3", "Configurando uma VPC", "Alterando o nome da conta root"],
+    answer: 0,
+    explanation: "O uso de MFA (autenticação multifator) aumenta a segurança do acesso à conta AWS.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço ajuda a proteger contra ataques DDoS?",
+    options: ["IAM", "AWS Shield", "CloudTrail", "SNS"],
+    answer: 1,
+    explanation: "O AWS Shield protege suas aplicações contra ataques de negação de serviço distribuído (DDoS).",
+    domain: 2
+  },
+  {
+    question: "Qual serviço permite a criação e gerenciamento de chaves de criptografia?",
+    options: ["Secrets Manager", "CloudWatch", "KMS", "EBS"],
+    answer: 2,
+    explanation: "O AWS KMS permite criar e usar chaves para criptografar dados em repouso ou em trânsito.",
+    domain: 2
+  },
+  {
+    question: "Qual exemplo representa controle físico de segurança?",
+    options: [
+      "MFA para login",
+      "Câmeras de segurança e vigilância nos datacenters",
+      "Política de acesso por tag",
+      "Backup criptografado"
+    ],
+    answer: 1,
+    explanation: "Controles físicos incluem segurança de datacenters como vigilância, trancas e biometria.",
+    domain: 2
+  },
+  {
+    question: "Para que serve o AWS Artifact?",
+    options: [
+      "Versionamento de código",
+      "Acesso a relatórios de conformidade e certificações",
+      "Monitoramento de instâncias EC2",
+      "Gerenciamento de licenças de software"
+    ],
+    answer: 1,
+    explanation: "O AWS Artifact dá acesso a relatórios de conformidade, auditoria e certificações da AWS.",
+    domain: 2
+  },
+  {
+    question: "Qual ferramenta fornece recomendações de segurança, custo e performance?",
+    options: ["CloudTrail", "Config", "Trusted Advisor", "IAM Analyzer"],
+    answer: 2,
+    explanation: "O Trusted Advisor fornece sugestões para otimizar segurança, performance e uso de recursos.",
+    domain: 2
+  },
+  {
+    question: "O que permite o AWS Organizations?",
+    options: [
+      "Gerenciar containers via ECS",
+      "Monitorar redes privadas",
+      "Unificar e controlar várias contas AWS sob uma organização",
+      "Auditar eventos de segurança"
+    ],
+    answer: 2,
+    explanation: "O AWS Organizations centraliza o gerenciamento de múltiplas contas com políticas compartilhadas.",
+    domain: 2
+  },
+  {
+    question: "O que representa o princípio do menor privilégio?",
+    options: [
+      "Usuários têm acesso total a tudo por padrão",
+      "Permissões são concedidas apenas conforme necessidade",
+      "Todos os usuários devem ser root",
+      "Apenas administradores podem acessar logs"
+    ],
+    answer: 1,
+    explanation: "Esse princípio garante que os usuários tenham apenas o acesso mínimo necessário para realizar suas tarefas.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço da AWS pode ser usado para rastrear permissões excessivas?",
+    options: ["Config", "IAM Access Analyzer", "CloudFront", "CloudTrail"],
+    answer: 1,
+    explanation: "O IAM Access Analyzer ajuda a identificar permissões desnecessárias ou excessivamente amplas.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço da AWS fornece máquinas virtuais na nuvem sob demanda?",
+    options: ["ECS", "Lambda", "EC2", "Fargate"],
+    answer: 2,
+    explanation: "O Amazon EC2 permite criar e gerenciar instâncias de computação escaláveis sob demanda.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço é ideal para armazenar objetos como arquivos, imagens e vídeos?",
+    options: ["EBS", "S3", "EFS", "Glacier"],
+    answer: 1,
+    explanation: "O Amazon S3 armazena objetos com alta durabilidade e acessibilidade.",
+    domain: 3
+  },
+  {
+    question: "Qual banco de dados gerenciado da AWS é NoSQL?",
+    options: ["RDS", "Aurora", "DynamoDB", "Redshift"],
+    answer: 2,
+    explanation: "O Amazon DynamoDB é um banco de dados NoSQL de alta performance e escalabilidade.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço executa código em resposta a eventos, sem necessidade de provisionar servidores?",
+    options: ["EC2", "ECS", "Lambda", "Fargate"],
+    answer: 2,
+    explanation: "O AWS Lambda permite rodar funções sob demanda sem gerenciar infraestrutura.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço orquestra containers Docker na AWS?",
+    options: ["ECS", "EKS", "EBS", "IAM"],
+    answer: 0,
+    explanation: "O Amazon ECS permite executar e escalar containers Docker de forma gerenciada.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço cria uma rede isolada logicamente na AWS?",
+    options: ["IAM", "VPC", "CloudFront", "Route 53"],
+    answer: 1,
+    explanation: "A Amazon VPC permite criar redes privadas com controle total de tráfego.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço da AWS entrega conteúdo com baixa latência globalmente?",
+    options: ["CloudFront", "CloudWatch", "SNS", "SQS"],
+    answer: 0,
+    explanation: "O Amazon CloudFront é uma CDN que entrega conteúdo de forma rápida a usuários no mundo todo.",
+    domain: 3
+  },
+  {
+    question: "Qual é o principal uso do Amazon EBS?",
+    options: [
+      "Armazenar arquivos de longa duração",
+      "Armazenamento em bloco para EC2",
+      "Gerenciar clusters de containers",
+      "Distribuição de conteúdo global"
+    ],
+    answer: 1,
+    explanation: "O Amazon EBS fornece volumes de armazenamento em bloco usados por instâncias EC2.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço permite compartilhamento de arquivos entre várias instâncias EC2?",
+    options: ["EBS", "S3", "EFS", "Glacier"],
+    answer: 2,
+    explanation: "O Amazon EFS é um sistema de arquivos escalável e compartilhado para instâncias EC2.",
+    domain: 3
+  },
+  {
+    question: "Para que serve o Amazon Route 53?",
+    options: [
+      "Monitorar performance de aplicações",
+      "Gerenciar filas de mensagens",
+      "Serviço de DNS escalável e gerenciado",
+      "Controlar acesso a buckets S3"
+    ],
+    answer: 2,
+    explanation: "O Amazon Route 53 gerencia nomes de domínio e direciona tráfego para serviços AWS.",
+    domain: 3
+  },
+  {
+    question: "Qual o principal objetivo do Amazon Lightsail?",
+    options: [
+      "Orquestrar containers com Kubernetes",
+      "Hospedar aplicações simples com custo previsível",
+      "Executar funções serverless",
+      "Gerenciar criptografia de dados"
+    ],
+    answer: 1,
+    explanation: "O Lightsail oferece instâncias simples e de baixo custo para aplicações básicas.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço coleta, monitora e exibe métricas de aplicações AWS?",
+    options: ["X-Ray", "CloudWatch", "CloudTrail", "Config"],
+    answer: 1,
+    explanation: "O Amazon CloudWatch coleta e exibe métricas e logs de recursos da AWS.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço permite modelar e provisionar recursos AWS usando código declarativo?",
+    options: ["ECS", "Elastic Beanstalk", "CodeBuild", "CloudFormation"],
+    answer: 3,
+    explanation: "O AWS CloudFormation é uma ferramenta de infraestrutura como código.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço da AWS permite implantar automaticamente aplicações web?",
+    options: [
+      "CloudFormation",
+      "Elastic Beanstalk",
+      "CodePipeline",
+      "CodeCommit"
+    ],
+    answer: 1,
+    explanation: "Elastic Beanstalk facilita o deploy de aplicações sem gerenciar a infraestrutura.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço automatiza o fluxo de entrega de software (CI/CD)?",
+    options: ["CodeDeploy", "CodePipeline", "CloudWatch", "ECS"],
+    answer: 1,
+    explanation: "O CodePipeline automatiza o processo de build, teste e deploy de aplicações.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço da AWS permite executar containers sem gerenciar servidores?",
+    options: ["EKS", "Fargate", "EBS", "IAM"],
+    answer: 1,
+    explanation: "O AWS Fargate executa containers de forma serverless, sem provisionar EC2.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço é ideal para filas de mensagens assíncronas?",
+    options: ["SNS", "SQS", "Kinesis", "SES"],
+    answer: 1,
+    explanation: "O Amazon SQS permite comunicação desacoplada entre componentes com alta disponibilidade.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço envia notificações por push, email e SMS?",
+    options: ["SES", "SQS", "SNS", "CloudWatch"],
+    answer: 2,
+    explanation: "O Amazon SNS publica mensagens para múltiplos protocolos como push e SMS.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço permite coletar e analisar dados de streaming em tempo real?",
+    options: ["CloudTrail", "SQS", "SNS", "Kinesis"],
+    answer: 3,
+    explanation: "O Amazon Kinesis processa grandes volumes de dados em tempo real.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço gerencia repositórios de código-fonte com Git?",
+    options: ["CodeDeploy", "CodeCommit", "CodePipeline", "ECS"],
+    answer: 1,
+    explanation: "O CodeCommit é um repositório Git seguro e gerenciado pela AWS.",
+    domain: 3
+  },
+  {
+    question: "Para que serve o Amazon RDS?",
+    options: [
+      "Gerenciar redes privadas",
+      "Gerenciar bancos de dados relacionais",
+      "Executar containers em larga escala",
+      "Monitorar usuários IAM"
+    ],
+    answer: 1,
+    explanation: "O Amazon RDS fornece bancos de dados como MySQL, PostgreSQL, Oracle e SQL Server de forma gerenciada.",
+    domain: 3
+  },
+  {
+    question: "Para que serve o AWS Auto Scaling?",
+    options: [
+      "Monitorar logs em tempo real",
+      "Gerar relatórios de faturamento",
+      "Ajustar automaticamente a capacidade de instâncias EC2",
+      "Criar políticas de acesso IAM"
+    ],
+    answer: 2,
+    explanation: "O Auto Scaling ajusta automaticamente a quantidade de instâncias com base na demanda.",
+    domain: 3
+  },
+  {
+    question: "Qual ferramenta da AWS permite estimar custos antes de usar os serviços?",
+    options: [
+      "Billing Console",
+      "Trusted Advisor",
+      "AWS Pricing Calculator",
+      "Cost Explorer"
+    ],
+    answer: 2,
+    explanation: "O Pricing Calculator ajuda a estimar os custos de serviços AWS com base em uso previsto.",
+    domain: 4
+  },
+  {
+    question: "Qual ferramenta envia alertas quando os custos ou uso ultrapassam um limite definido?",
+    options: ["CloudTrail", "Budgets", "Cost Explorer", "Billing Dashboard"],
+    answer: 1,
+    explanation: "O AWS Budgets permite definir alertas personalizados com base em uso ou gastos.",
+    domain: 4
+  },
+  {
+    question: "O que são instâncias reservadas na AWS?",
+    options: [
+      "Instâncias que iniciam automaticamente ao ligar o console",
+      "Instâncias com desconto ao assumir um compromisso de uso por 1 ou 3 anos",
+      "Instâncias exclusivas para clientes do plano Enterprise",
+      "Instâncias para uso interno apenas"
+    ],
+    answer: 1,
+    explanation: "Instâncias reservadas oferecem descontos ao se comprometer com uso de longo prazo.",
+    domain: 4
+  },
+  {
+    question: "O que representa o modelo de cobrança 'pay-as-you-go' da AWS?",
+    options: [
+      "Pagamento mensal fixo por todos os recursos",
+      "Pagamento adiantado com desconto",
+      "Pagamento apenas pelos recursos utilizados",
+      "Pagamento com base em número de contas na organização"
+    ],
+    answer: 2,
+    explanation: "No modelo pay-as-you-go, você paga apenas pelo que usar, sem custos fixos.",
+    domain: 4
+  },
+  {
+    question: "Qual plano de suporte da AWS é gratuito?",
+    options: ["Basic", "Developer", "Business", "Enterprise"],
+    answer: 0,
+    explanation: "O plano Basic é gratuito e inclui acesso a documentação, whitepapers e fóruns.",
+    domain: 4
+  },
+  {
+    question: "Qual plano de suporte da AWS oferece um gerente técnico de conta (TAM)?",
+    options: ["Developer", "Basic", "Business", "Enterprise"],
+    answer: 3,
+    explanation: "O plano Enterprise inclui um gerente técnico designado (TAM) para suporte dedicado.",
+    domain: 4
+  },
+  {
+    question: "Qual ferramenta ajuda a visualizar e analisar os gastos atuais com serviços AWS?",
+    options: ["Cost Explorer", "Budgets", "Config", "Billing Console"],
+    answer: 0,
+    explanation: "O Cost Explorer permite visualizar e detalhar seus custos por serviço e período.",
+    domain: 4
+  }
+];
+
+
+    const domainWeights = { 1: 0.24, 2: 0.30, 3: 0.34, 4: 0.12 };
+    const totalScore = 1000;
+    let current = 0;
+    let questions = [];
+    let answers = [];
+    let showExplanation = [];
+
+    function startQuiz() {
+      questions = questionsRaw.sort(() => Math.random() - 0.5);
+      answers = Array(questions.length).fill(null);
+      showExplanation = Array(questions.length).fill(false);
+      current = 0;
+      renderQuestion();
+    }
+
+    function calculateScore() {
+      let domainCorrect = {};
+      let domainTotal = {};
+
+      for (let i = 0; i < questions.length; i++) {
+        const domain = questions[i].domain;
+        domainTotal[domain] = (domainTotal[domain] || 0) + 1;
+        if (answers[i] === questions[i].answer) {
+          domainCorrect[domain] = (domainCorrect[domain] || 0) + 1;
+        }
+      }
+
+      let score = 0;
+      for (let domain in domainWeights) {
+        const weight = domainWeights[domain];
+        const correct = domainCorrect[domain] || 0;
+        const total = domainTotal[domain] || 1;
+        score += (correct / total) * weight * totalScore;
+      }
+      return score;
+    }
+
+    function renderQuestion() {
+      const quizContainer = document.getElementById('quiz');
+      if (current >= questions.length) {
+        const score = Math.round(calculateScore());
+        const incorrectIndexes = answers.map((a, i) => a !== questions[i].answer ? i : null).filter(i => i !== null);
+
+        quizContainer.innerHTML = `
+          <div style="text-align:center; padding: 20px 30px;">
+            <h2 style="color:#10b981; margin-bottom:10px">🎉 Resultado final</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">Você fez <strong>${score}</strong> de <strong>${totalScore}</strong> pontos.</p>
+            ${incorrectIndexes.length > 0 ? `
+              <h3 style="color:#ef4444; text-align:left">❌ Explicações das perguntas erradas:</h3>
+              <ul style="padding-left: 20px; text-align:left; line-height: 1.6;">
+                ${incorrectIndexes.map(i => `<li style="margin-bottom: 10px;"><strong>${questions[i].question}</strong><br/><em>${questions[i].explanation}</em></li>`).join('')}
+              </ul>
+            ` : '<p style="color: #10b981; font-weight: bold">Parabéns! Você acertou todas as perguntas.</p>'}
+            <div class="nav-buttons" style="margin-top: 30px;"><button onclick="location.reload()">Refazer Quiz</button></div>
+          </div>`;
+        return;
+      }
+
+      const q = questions[current];
+      const selected = answers[current];
+      const explanationShown = showExplanation[current];
+      const progressPercent = Math.round((current / questions.length) * 100);
+
+      quizContainer.innerHTML = `
+        <div class="progress-bar"><div class="progress-fill" style="width: ${progressPercent}%"></div></div>
+        <div class="question">
+          <h3>${q.question}</h3>
+          <div class="options">
+            ${q.options.map((opt, i) => {
+              let className = '';
+              if (explanationShown) {
+                className = i === q.answer ? 'correct' : i === selected ? 'incorrect' : '';
+              } else if (i === selected) {
+                className = 'selected';
+              }
+              return `<button onclick="selectOption(${i})" class="${className}" ${explanationShown ? 'disabled' : ''}>${opt}</button>`;
+            }).join('')}
+          </div>
+          ${explanationShown ? `<div class="explanation"><strong>Explicação:</strong> ${q.explanation}</div>` : ''}
+          <div class="progress">Pergunta ${current + 1} de ${questions.length}</div>
+          <div class="nav-buttons">
+            <button onclick="prevQuestion()" ${current === 0 ? 'disabled' : ''}>Voltar</button>
+            ${explanationShown ? `<button onclick="nextQuestion()">Avançar</button>` : `<button onclick="verifyAnswer()" ${selected === null ? 'disabled' : ''}>Verificar</button>`}
+          </div>
+        </div>
+      `;
+    }
+
+    function selectOption(index) {
+      answers[current] = index;
+      renderQuestion();
+    }
+
+    function verifyAnswer() {
+      showExplanation[current] = true;
+      renderQuestion();
+    }
+
+    function nextQuestion() {
+      current++;
+      renderQuestion();
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        renderQuestion();
+      }
+    }
+
+    function toggleAccordion() {
+        const content = document.getElementById("accordionContent");
+        content.style.display = content.style.display === "none" ? "block" : "none";
+    }
+  </script>
+</body>
+</html>
