@@ -6,7 +6,7 @@ Este projeto é um **simulador interativo de quiz** com 65 questões baseadas no
 
 ## 🚀 Funcionalidades
 
-- ✅ 65 questões reais organizadas por domínio
+- ✅ 65 questões simuladas organizadas por domínio
 - 📊 Cálculo de pontuação proporcional por domínio
 - 💡 Explicações após cada resposta
 - 🔁 Botão para refazer o quiz
