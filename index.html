@@ -203,643 +203,1136 @@
     </div>
   </div>
   <script>
-   const questionsRaw = [
+   const questionsRaw =  [
   {
-    question: "Qual é a definição de escalabilidade horizontal na AWS?",
+    question: "Uma empresa quer analisar as tendências de gastos da AWS dos últimos seis meses. Qual ferramenta deve usar?",
     options: [
-      "Aumentar o tamanho de uma instância existente",
-      "Adicionar novas instâncias para distribuir a carga",
-      "Reduzir a latência da rede",
-      "Substituir instâncias EC2 por Lambda"
+      "AWS Budgets",
+      "Relatório de Uso e Custos da AWS",
+      "AWS Trusted Advisor",
+      "AWS Cost Explorer"
     ],
-    answer: 1,
-    explanation: "Escalabilidade horizontal significa adicionar novas instâncias para lidar com aumento de carga.",
-    domain: 1
-  },
-  {
-    question: "Como a AWS proporciona economia de escala?",
-    options: [
-      "Descontos por uso antecipado de instâncias",
-      "Redução de custos à medida que o volume de uso aumenta",
-      "Contratos de longo prazo com pagamento fixo",
-      "Migração automática entre regiões"
-    ],
-    answer: 1,
-    explanation: "Na AWS, o custo por unidade diminui conforme o uso aumenta, gerando economia de escala.",
-    domain: 1
-  },
-  {
-    question: "O que caracteriza um ambiente com alta disponibilidade na nuvem?",
-    options: [
-      "Armazenamento local de dados críticos",
-      "Replicação e redundância entre zonas de disponibilidade",
-      "Restrições geográficas para acesso",
-      "Necessidade de licenças locais"
-    ],
-    answer: 1,
-    explanation: "Alta disponibilidade usa múltiplas zonas para garantir acesso contínuo mesmo com falhas.",
-    domain: 1
-  },
-  {
-    question: "Qual é uma das principais vantagens da computação em nuvem sobre a infraestrutura local tradicional?",
-    options: [
-      "Atualizações manuais frequentes",
-      "Instalação física de servidores",
-      "Recursos sob demanda e escaláveis",
-      "Necessidade de grandes investimentos iniciais"
-    ],
-    answer: 2,
-    explanation: "A nuvem permite escalar sob demanda, sem investimento inicial em hardware.",
-    domain: 1
-  },
-  {
-    question: "Como a AWS oferece flexibilidade tecnológica para os clientes?",
-    options: [
-      "Limitando a escolha de sistema operacional",
-      "Suportando apenas linguagens padrão da AWS",
-      "Permitindo uso de diferentes ferramentas e sistemas operacionais",
-      "Impedindo a integração com serviços externos"
-    ],
-    answer: 2,
-    explanation: "A AWS permite que os clientes escolham linguagens, sistemas operacionais e bancos de dados.",
-    domain: 1
-  },
-  {
-    question: "Qual exemplo representa agilidade com uso da nuvem?",
-    options: [
-      "Esperar semanas para instalar servidores físicos",
-      "Iniciar um ambiente completo em minutos",
-      "Configurar servidores manualmente",
-      "Criar contratos fixos de infraestrutura"
-    ],
-    answer: 1,
-    explanation: "A nuvem permite lançar novos recursos rapidamente, promovendo agilidade.",
-    domain: 1
-  },
-  {
-    question: "Por que clientes globais se beneficiam de múltiplas regiões da AWS?",
-    options: [
-      "Backup automático",
-      "Redução de custos com licenças",
-      "Menor latência para usuários em diferentes localizações",
-      "Aumento da capacidade computacional local"
-    ],
-    answer: 2,
-    explanation: "O uso de múltiplas regiões reduz a latência para usuários distribuídos globalmente.",
-    domain: 1
-  },
-  {
-    question: "Qual pilar do AWS Well-Architected está diretamente ligado à recuperação de falhas?",
-    options: [
-      "Excelência Operacional",
-      "Confiabilidade",
-      "Segurança",
-      "Eficiência de Performance"
-    ],
-    answer: 1,
-    explanation: "O pilar de Confiabilidade foca na tolerância a falhas e recuperação rápida.",
-    domain: 1
-  },
-  {
-    question: "O que significa elasticidade na AWS?",
-    options: [
-      "Contratos fixos de capacidade",
-      "Ajuste automático de recursos conforme demanda",
-      "Monitoramento manual de servidores",
-      "Previsibilidade de custos fixos"
-    ],
-    answer: 1,
-    explanation: "Elasticidade permite aumentar ou reduzir recursos automaticamente com base na demanda.",
-    domain: 1
-  },
-  {
-    question: "O que define o modelo de responsabilidade compartilhada da AWS?",
-    options: [
-      "Cliente cuida de tudo, inclusive da infraestrutura",
-      "AWS cuida da segurança na nuvem; o cliente da segurança dentro da nuvem",
-      "AWS gerencia os dados dos clientes",
-      "Cliente recebe suporte total para qualquer problema"
-    ],
-    answer: 1,
-    explanation: "A AWS protege a infraestrutura e o cliente é responsável pela configuração segura dos serviços.",
-    domain: 1
-  },
-  {
-    question: "O que significa 'pagamento sob demanda' na AWS?",
-    options: [
-      "Cobrança fixa mensal",
-      "Pagamento antecipado por recursos futuros",
-      "Pagar apenas pelos recursos usados, quando usados",
-      "Licença anual com suporte incluso"
-    ],
-    answer: 2,
-    explanation: "O modelo sob demanda permite pagar apenas pelos recursos usados, sem contratos antecipados.",
-    domain: 1
-  },
-  {
-    question: "Quais são os principais modelos de implantação em nuvem?",
-    options: [
-      "Privado, Público e Híbrido",
-      "Físico, Virtualizado e Containerizado",
-      "DevOps, Agile e Waterfall",
-      "Amazon, Google e Microsoft"
-    ],
-    answer: 0,
-    explanation: "Os principais modelos de implantação são: Nuvem Pública, Privada e Híbrida.",
-    domain: 1
-  },
-  {
-    question: "O que significa resiliência na computação em nuvem?",
-    options: [
-      "Capacidade de responder automaticamente a alertas",
-      "Capacidade de se recuperar rapidamente após falhas",
-      "Capacidade de armazenar backups locais",
-      "Capacidade de usar software proprietário"
-    ],
-    answer: 1,
-    explanation: "Resiliência é a habilidade de um sistema se recuperar de falhas e continuar operando.",
-    domain: 1
-  },
-  {
-    question: "Qual das opções é uma característica essencial da computação em nuvem?",
-    options: [
-      "Dependência de hardware físico local",
-      "Provisionamento lento e manual",
-      "Capacidade elástica sob demanda",
-      "Acesso limitado baseado em localidade"
-    ],
-    answer: 2,
-    explanation: "Elasticidade sob demanda é uma das características fundamentais da computação em nuvem.",
-    domain: 1
-  },
-  {
-    question: "O que caracteriza a escalabilidade na AWS?",
-    options: [
-      "Execução contínua de backups",
-      "Capacidade de aumentar recursos automaticamente conforme necessidade",
-      "Armazenamento manual de logs",
-      "Conexão direta com instâncias físicas"
-    ],
-    answer: 1,
-    explanation: "Escalabilidade é a capacidade de crescer conforme a demanda, mantendo a performance.",
-    domain: 1
-  },
-  {
-    question: "Qual é a principal vantagem de usar a AWS ao invés de um datacenter tradicional?",
-    options: [
-      "Infraestrutura gerenciada pelo cliente",
-      "Escalabilidade limitada",
-      "Custo sob uso e acesso global rápido",
-      "Capacidade de manutenção física"
-    ],
-    answer: 2,
-    explanation: "A nuvem permite acesso global, escalabilidade e pagamento apenas pelo uso real.",
-    domain: 1
-  },
-  {
-    question: "Qual serviço da AWS registra todas as chamadas de API para fins de auditoria?",
-    options: ["IAM", "CloudTrail", "KMS", "S3"],
-    answer: 1,
-    explanation: "O AWS CloudTrail monitora e registra todas as ações realizadas por meio da API da AWS.",
-    domain: 2
-  },
-  {
-    question: "O que é uma política no AWS IAM?",
-    options: [
-      "Script de backup automatizado",
-      "Documento JSON que define permissões",
-      "Arquivo de log de rede",
-      "Grupo de usuários com tags"
-    ],
-    answer: 1,
-    explanation: "Políticas no IAM são documentos JSON usados para definir permissões de acesso.",
-    domain: 2
-  },
-  {
-    question: "Qual a principal função de um grupo no IAM?",
-    options: [
-      "Organizar buckets S3",
-      "Reunir instâncias EC2",
-      "Aplicar permissões a vários usuários de forma centralizada",
-      "Executar scripts agendados"
-    ],
-    answer: 2,
-    explanation: "Grupos IAM permitem aplicar políticas a vários usuários ao mesmo tempo.",
-    domain: 2
-  },
-  {
-    question: "Qual é um exemplo de controle de segurança lógico?",
-    options: [
-      "Trancas nas portas dos datacenters",
-      "Controle de temperatura",
-      "Política de senha forte para usuários",
-      "Monitoramento de umidade do ambiente"
-    ],
-    answer: 2,
-    explanation: "Controles lógicos envolvem medidas como autenticação e configuração de permissões.",
-    domain: 2
-  },
-  {
-    question: "Qual serviço permite armazenar e rotacionar segredos com segurança?",
-    options: ["KMS", "Secrets Manager", "CloudTrail", "Config"],
-    answer: 1,
-    explanation: "O Secrets Manager permite armazenar, acessar e rotacionar senhas e chaves de API com segurança.",
-    domain: 2
-  },
-  {
-    question: "Para que serve o AWS Config?",
-    options: [
-      "Auditar configurações e alterações em recursos",
-      "Gerenciar clusters de containers",
-      "Enviar notificações por SMS",
-      "Executar backups automáticos"
-    ],
-    answer: 0,
-    explanation: "O AWS Config permite rastrear alterações e auditoria na configuração de recursos AWS.",
-    domain: 2
-  },
-  {
-    question: "Qual serviço detecta comportamentos suspeitos ou anomalias de segurança?",
-    options: ["Inspector", "KMS", "GuardDuty", "IAM Analyzer"],
-    answer: 2,
-    explanation: "O GuardDuty usa machine learning para identificar atividades potencialmente maliciosas.",
-    domain: 2
-  },
-  {
-    question: "O que o AWS WAF protege?",
-    options: [
-      "Transferência de arquivos entre buckets",
-      "Serviços de autenticação",
-      "Aplicações web contra ataques como SQL Injection",
-      "Gerenciamento de instâncias EC2"
-    ],
-    answer: 2,
-    explanation: "O WAF (Web Application Firewall) protege contra ameaças em aplicações web.",
-    domain: 2
-  },
-  {
-    question: "Quando devo usar uma IAM Role em vez de um usuário IAM?",
-    options: [
-      "Quando quiser conceder acesso temporário a recursos",
-      "Para criar contas de email",
-      "Para acessar o console da AWS como root",
-      "Para monitorar métricas de rede"
-    ],
-    answer: 0,
-    explanation: "Roles são ideais para conceder permissões temporárias com base em políticas definidas.",
-    domain: 2
-  },
-  {
-    question: "Qual serviço fornece certificados SSL/TLS gratuitos e gerenciados?",
-    options: ["S3", "IAM", "Route 53", "ACM"],
     answer: 3,
-    explanation: "O AWS Certificate Manager (ACM) gerencia certificados SSL para uso em seus serviços.",
-    domain: 2
+    explanation: "O AWS Cost Explorer é projetado para visualizar e analisar padrões de uso e tendências de custo ao longo do tempo.",
+    domain: 1
   },
   {
-    question: "O que define o modelo de responsabilidade compartilhada da AWS?",
+    question: "Qual serviço AWS permite armazenar e recuperar objetos com 11 noves de durabilidade e múltiplas classes de armazenamento?",
     options: [
-      "O cliente gerencia tudo, incluindo data centers",
-      "A AWS é responsável pela segurança dos dados dos clientes",
-      "A AWS gerencia a infraestrutura e o cliente gerencia o que é implantado nela",
-      "O cliente não tem responsabilidade sobre segurança na nuvem"
+      "Amazon EFS",
+      "Amazon S3",
+      "Amazon EBS",
+      "AWS Storage Gateway"
+    ],
+    answer: 1,
+    explanation: "O S3 fornece armazenamento de objetos com 99,999999999% de durabilidade e suporta classes como Standard, IA e Glacier.",
+    domain: 1
+  },
+  {
+    question: "Qual recurso AWS permite escalar automaticamente instâncias EC2 com base na demanda de tráfego?",
+    options: [
+      "Instâncias Reservadas EC2",
+      "Elastic Load Balancer",
+      "AWS Auto Scaling",
+      "Instâncias Spot EC2"
     ],
     answer: 2,
-    explanation: "No modelo de responsabilidade compartilhada, a AWS protege a infraestrutura e o cliente configura e protege seus próprios dados e serviços.",
-    domain: 2
+    explanation: "O AWS Auto Scaling ajusta dinamicamente o número de instâncias EC2 conforme a demanda, mantendo desempenho e otimizando custos.",
+    domain: 1
   },
   {
-    question: "Como reforçar a segurança no login ao Console da AWS?",
-    options: ["Ativando o MFA", "Usando o S3", "Configurando uma VPC", "Alterando o nome da conta root"],
+    question: "Quem é responsável por configurar regras de firewall para controlar o tráfego para instâncias EC2?",
+    options: [
+      "AWS",
+      "Roles IAM",
+      "O Cliente",
+      "Suporte AWS"
+    ],
+    answer: 2,
+    explanation: "No modelo de responsabilidade compartilhada, o cliente gerencia a segurança de recursos configurados, incluindo regras de firewall via grupos de segurança e NACLs.",
+    domain: 1
+  },
+  {
+    question: "Um usuário precisa executar código em resposta a um upload de arquivo no S3, mas não quer gerenciar servidores. Qual serviço deve usar?",
+    options: [
+      "Amazon EC2",
+      "AWS Lambda",
+      "Amazon ECS",
+      "AWS Batch"
+    ],
+    answer: 1,
+    explanation: "O Lambda executa código em resposta a eventos sem provisionar ou gerenciar servidores, ideal para cargas baseadas em eventos como gatilhos do S3.",
+    domain: 1
+  },
+  {
+    question: "Qual ferramenta AWS fornece verificações automatizadas de melhores práticas para segurança, tolerância a falhas e otimização de custos?",
+    options: [
+      "AWS CloudTrail",
+      "AWS Budgets",
+      "AWS Trusted Advisor",
+      "Amazon Inspector"
+    ],
+    answer: 2,
+    explanation: "O Trusted Advisor oferece verificações em cinco categorias: segurança, tolerância a falhas, desempenho, limites de serviço e otimização de custos.",
+    domain: 1
+  },
+  {
+    question: "Qual serviço AWS detecta atividade não autorizada, como chamadas de API incomuns ou instâncias potencialmente comprometidas?",
+    options: [
+      "Amazon CloudWatch",
+      "AWS Shield",
+      "Amazon GuardDuty",
+      "AWS WAF"
+    ],
+    answer: 2,
+    explanation: "O GuardDuty detecta atividades suspeitas analisando logs AWS usando machine learning.",
+    domain: 1
+  },
+  {
+    question: "Uma equipe quer automatizar implantações de infraestrutura em múltiplos ambientes usando modelos versionados. Qual serviço deve usar?",
+    options: [
+      "Amazon EC2",
+      "AWS Config",
+      "AWS CloudFormation",
+      "AWS Auto Scaling"
+    ],
+    answer: 2,
+    explanation: "O CloudFormation permite modelar infraestrutura como código com YAML/JSON para implantações consistentes.",
+    domain: 1
+  },
+  {
+    question: "Qual serviço AWS permite resolução DNS segura e escalável para aplicações hospedadas?",
+    options: [
+      "Amazon Route 53",
+      "Amazon CloudFront",
+      "AWS Direct Connect",
+      "AWS Global Accelerator"
+    ],
     answer: 0,
-    explanation: "O uso de MFA (autenticação multifator) aumenta a segurança do acesso à conta AWS.",
-    domain: 2
+    explanation: "O Route 53 é um serviço DNS web escalável para registro de domínios, roteamento e verificações de integridade.",
+    domain: 1
   },
   {
-    question: "Qual serviço ajuda a proteger contra ataques DDoS?",
-    options: ["IAM", "AWS Shield", "CloudTrail", "SNS"],
-    answer: 1,
-    explanation: "O AWS Shield protege suas aplicações contra ataques de negação de serviço distribuído (DDoS).",
-    domain: 2
-  },
-  {
-    question: "Qual serviço permite a criação e gerenciamento de chaves de criptografia?",
-    options: ["Secrets Manager", "CloudWatch", "KMS", "EBS"],
-    answer: 2,
-    explanation: "O AWS KMS permite criar e usar chaves para criptografar dados em repouso ou em trânsito.",
-    domain: 2
-  },
-  {
-    question: "Qual exemplo representa controle físico de segurança?",
+    question: "Qual é o propósito do Amazon CloudFront?",
     options: [
-      "MFA para login",
-      "Câmeras de segurança e vigilância nos datacenters",
-      "Política de acesso por tag",
-      "Backup criptografado"
+      "Proteger aplicações de SQL injection",
+      "Armazenar conteúdo em cache em localizações de borda para reduzir latência",
+      "Roteamento de tráfego entre VPCs privadas",
+      "Criar firewalls virtuais para instâncias EC2"
     ],
     answer: 1,
-    explanation: "Controles físicos incluem segurança de datacenters como vigilância, trancas e biometria.",
-    domain: 2
+    explanation: "O CloudFront é uma CDN que entrega conteúdo em cache via edge locations, melhorando a performance globalmente.",
+    domain: 1
   },
   {
-    question: "Para que serve o AWS Artifact?",
+    question: "Qual é o objetivo de usar SCPs no AWS Organizations?",
     options: [
-      "Versionamento de código",
-      "Acesso a relatórios de conformidade e certificações",
-      "Monitoramento de instâncias EC2",
-      "Gerenciamento de licenças de software"
-    ],
-    answer: 1,
-    explanation: "O AWS Artifact dá acesso a relatórios de conformidade, auditoria e certificações da AWS.",
-    domain: 2
-  },
-  {
-    question: "Qual ferramenta fornece recomendações de segurança, custo e performance?",
-    options: ["CloudTrail", "Config", "Trusted Advisor", "IAM Analyzer"],
-    answer: 2,
-    explanation: "O Trusted Advisor fornece sugestões para otimizar segurança, performance e uso de recursos.",
-    domain: 2
-  },
-  {
-    question: "O que permite o AWS Organizations?",
-    options: [
-      "Gerenciar containers via ECS",
-      "Monitorar redes privadas",
-      "Unificar e controlar várias contas AWS sob uma organização",
-      "Auditar eventos de segurança"
+      "Criptografar dados armazenados no S3",
+      "Bloquear acesso à Internet em subnets privadas",
+      "Aplicar limites de permissões em contas",
+      "Configurar grupos de segurança"
     ],
     answer: 2,
-    explanation: "O AWS Organizations centraliza o gerenciamento de múltiplas contas com políticas compartilhadas.",
-    domain: 2
+    explanation: "SCPs definem permissões máximas que contas em uma organização podem ter, independente das políticas IAM.",
+    domain: 1
   },
   {
-    question: "O que representa o princípio do menor privilégio?",
+    question: "Qual serviço AWS rastreia alterações de configuração e ajuda a gerenciar compliance?",
     options: [
-      "Usuários têm acesso total a tudo por padrão",
-      "Permissões são concedidas apenas conforme necessidade",
-      "Todos os usuários devem ser root",
-      "Apenas administradores podem acessar logs"
+      "Amazon CloudTrail",
+      "AWS Config",
+      "AWS Systems Manager",
+      "AWS Certificate Manager"
     ],
     answer: 1,
-    explanation: "Esse princípio garante que os usuários tenham apenas o acesso mínimo necessário para realizar suas tarefas.",
-    domain: 2
+    explanation: "O AWS Config monitora configurações de recursos, auditoria e notifica desvios de conformidade.",
+    domain: 1
   },
   {
-    question: "Qual serviço da AWS pode ser usado para rastrear permissões excessivas?",
-    options: ["Config", "IAM Access Analyzer", "CloudFront", "CloudTrail"],
-    answer: 1,
-    explanation: "O IAM Access Analyzer ajuda a identificar permissões desnecessárias ou excessivamente amplas.",
-    domain: 2
-  },
-  {
-    question: "Qual serviço da AWS fornece máquinas virtuais na nuvem sob demanda?",
-    options: ["ECS", "Lambda", "EC2", "Fargate"],
-    answer: 2,
-    explanation: "O Amazon EC2 permite criar e gerenciar instâncias de computação escaláveis sob demanda.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço é ideal para armazenar objetos como arquivos, imagens e vídeos?",
-    options: ["EBS", "S3", "EFS", "Glacier"],
-    answer: 1,
-    explanation: "O Amazon S3 armazena objetos com alta durabilidade e acessibilidade.",
-    domain: 3
-  },
-  {
-    question: "Qual banco de dados gerenciado da AWS é NoSQL?",
-    options: ["RDS", "Aurora", "DynamoDB", "Redshift"],
-    answer: 2,
-    explanation: "O Amazon DynamoDB é um banco de dados NoSQL de alta performance e escalabilidade.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço executa código em resposta a eventos, sem necessidade de provisionar servidores?",
-    options: ["EC2", "ECS", "Lambda", "Fargate"],
-    answer: 2,
-    explanation: "O AWS Lambda permite rodar funções sob demanda sem gerenciar infraestrutura.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço orquestra containers Docker na AWS?",
-    options: ["ECS", "EKS", "EBS", "IAM"],
-    answer: 0,
-    explanation: "O Amazon ECS permite executar e escalar containers Docker de forma gerenciada.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço cria uma rede isolada logicamente na AWS?",
-    options: ["IAM", "VPC", "CloudFront", "Route 53"],
-    answer: 1,
-    explanation: "A Amazon VPC permite criar redes privadas com controle total de tráfego.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço da AWS entrega conteúdo com baixa latência globalmente?",
-    options: ["CloudFront", "CloudWatch", "SNS", "SQS"],
-    answer: 0,
-    explanation: "O Amazon CloudFront é uma CDN que entrega conteúdo de forma rápida a usuários no mundo todo.",
-    domain: 3
-  },
-  {
-    question: "Qual é o principal uso do Amazon EBS?",
+    question: "Qual serviço AWS fornece um local central para baixar relatórios de conformidade como SOC 2 e ISO 27001?",
     options: [
-      "Armazenar arquivos de longa duração",
-      "Armazenamento em bloco para EC2",
-      "Gerenciar clusters de containers",
-      "Distribuição de conteúdo global"
-    ],
-    answer: 1,
-    explanation: "O Amazon EBS fornece volumes de armazenamento em bloco usados por instâncias EC2.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço permite compartilhamento de arquivos entre várias instâncias EC2?",
-    options: ["EBS", "S3", "EFS", "Glacier"],
-    answer: 2,
-    explanation: "O Amazon EFS é um sistema de arquivos escalável e compartilhado para instâncias EC2.",
-    domain: 3
-  },
-  {
-    question: "Para que serve o Amazon Route 53?",
-    options: [
-      "Monitorar performance de aplicações",
-      "Gerenciar filas de mensagens",
-      "Serviço de DNS escalável e gerenciado",
-      "Controlar acesso a buckets S3"
+      "AWS Shield",
+      "AWS Config",
+      "AWS Artifact",
+      "Amazon Inspector"
     ],
     answer: 2,
-    explanation: "O Amazon Route 53 gerencia nomes de domínio e direciona tráfego para serviços AWS.",
-    domain: 3
+    explanation: "O Artifact disponibiliza documentos de conformidade sob demanda, incluindo relatórios de auditoria e certificações.",
+    domain: 1
   },
   {
-    question: "Qual o principal objetivo do Amazon Lightsail?",
+    question: "Um cliente precisa minimizar a latência ao entregar conteúdo a usuários globais. Qual serviço AWS deve usar?",
     options: [
-      "Orquestrar containers com Kubernetes",
-      "Hospedar aplicações simples com custo previsível",
-      "Executar funções serverless",
-      "Gerenciar criptografia de dados"
+      "Amazon Route 53",
+      "Amazon S3",
+      "Amazon CloudFront",
+      "Amazon RDS"
     ],
-    answer: 1,
-    explanation: "O Lightsail oferece instâncias simples e de baixo custo para aplicações básicas.",
-    domain: 3
+    answer: 2,
+    explanation: "O CloudFront é uma CDN global que entrega conteúdo com baixa latência usando edge locations.",
+    domain: 1
   },
   {
-    question: "Qual serviço coleta, monitora e exibe métricas de aplicações AWS?",
-    options: ["X-Ray", "CloudWatch", "CloudTrail", "Config"],
-    answer: 1,
-    explanation: "O Amazon CloudWatch coleta e exibe métricas e logs de recursos da AWS.",
-    domain: 3
+    question: "Qual serviço AWS é usado para agendar e executar scripts automatizados como backups ou atualizações sem gerenciar infraestrutura?",
+    options: [
+      "Amazon EC2",
+      "Amazon Inspector",
+      "AWS Lambda",
+      "AWS CloudTrail"
+    ],
+    answer: 2,
+    explanation: "O Lambda executa código em resposta a gatilhos ou cron jobs, sem precisar gerenciar servidores.",
+    domain: 1
   },
   {
-    question: "Qual serviço permite modelar e provisionar recursos AWS usando código declarativo?",
-    options: ["ECS", "Elastic Beanstalk", "CodeBuild", "CloudFormation"],
+    question: "Qual serviço AWS ajuda a criar interfaces de chatbot que respondem em linguagem natural?",
+    options: [
+      "Amazon Comprehend",
+      "Amazon SageMaker",
+      "Amazon Lex",
+      "AWS Lambda"
+    ],
+    answer: 2,
+    explanation: "O Amazon Lex é usado para criar chatbots com processamento de linguagem natural.",
+    domain: 1
+  },
+  {
+    question: "Uma empresa precisa armazenar dados de sessão de usuários com baixa latência. Qual serviço usar?",
+    options: [
+      "Amazon RDS",
+      "Amazon DynamoDB",
+      "Amazon Redshift",
+      "Amazon ElastiCache"
+    ],
     answer: 3,
-    explanation: "O AWS CloudFormation é uma ferramenta de infraestrutura como código.",
-    domain: 3
+    explanation: "O ElastiCache oferece armazenamento em memória com latência muito baixa, ideal para sessões de usuário.",
+    domain: 1
   },
   {
-    question: "Qual serviço da AWS permite implantar automaticamente aplicações web?",
+    question: "Qual serviço AWS permite criar, gerenciar e implantar certificados SSL/TLS para proteger sites?",
     options: [
-      "CloudFormation",
-      "Elastic Beanstalk",
-      "CodePipeline",
-      "CodeCommit"
+      "AWS KMS",
+      "Amazon Certificate Manager (ACM)",
+      "AWS Shield",
+      "AWS Secrets Manager"
     ],
     answer: 1,
-    explanation: "Elastic Beanstalk facilita o deploy de aplicações sem gerenciar a infraestrutura.",
-    domain: 3
+    explanation: "O ACM gerencia a emissão e renovação de certificados SSL/TLS para tráfego HTTPS.",
+    domain: 1
   },
   {
-    question: "Qual serviço automatiza o fluxo de entrega de software (CI/CD)?",
-    options: ["CodeDeploy", "CodePipeline", "CloudWatch", "ECS"],
-    answer: 1,
-    explanation: "O CodePipeline automatiza o processo de build, teste e deploy de aplicações.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço da AWS permite executar containers sem gerenciar servidores?",
-    options: ["EKS", "Fargate", "EBS", "IAM"],
-    answer: 1,
-    explanation: "O AWS Fargate executa containers de forma serverless, sem provisionar EC2.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço é ideal para filas de mensagens assíncronas?",
-    options: ["SNS", "SQS", "Kinesis", "SES"],
-    answer: 1,
-    explanation: "O Amazon SQS permite comunicação desacoplada entre componentes com alta disponibilidade.",
-    domain: 3
-  },
-  {
-    question: "Qual serviço envia notificações por push, email e SMS?",
-    options: ["SES", "SQS", "SNS", "CloudWatch"],
+    question: "Qual serviço AWS é usado para executar e escalar aplicativos em contêiner sem gerenciar instâncias EC2?",
+    options: [
+      "Amazon ECS com EC2",
+      "Amazon EC2 Auto Scaling",
+      "AWS Fargate",
+      "Amazon RDS"
+    ],
     answer: 2,
-    explanation: "O Amazon SNS publica mensagens para múltiplos protocolos como push e SMS.",
-    domain: 3
+    explanation: "O Fargate é um ambiente serverless para executar tarefas ECS/EKS sem gerenciar a infraestrutura.",
+    domain: 1
   },
   {
-    question: "Qual serviço permite coletar e analisar dados de streaming em tempo real?",
-    options: ["CloudTrail", "SQS", "SNS", "Kinesis"],
+    question: "Qual serviço AWS fornece rede virtual isolada logicamente na nuvem?",
+    options: [
+      "Amazon VPC",
+      "Amazon EC2",
+      "AWS Direct Connect",
+      "AWS IAM"
+    ],
+    answer: 0,
+    explanation: "O VPC permite definir uma rede privada, com controle de IPs, subnets e roteamento.",
+    domain: 1
+  },
+  {
+    question: "Qual serviço AWS otimiza custos movendo dados entre camadas de acesso com base no uso?",
+    options: [
+      "AWS Direct Connect",
+      "AWS DataSync",
+      "AWS Snowball",
+      "S3 Intelligent-Tiering"
+    ],
     answer: 3,
-    explanation: "O Amazon Kinesis processa grandes volumes de dados em tempo real.",
-    domain: 3
+    explanation: "O S3 Intelligent-Tiering ajusta automaticamente objetos entre classes de armazenamento frequente e infrequente.",
+    domain: 1
   },
   {
-    question: "Qual serviço gerencia repositórios de código-fonte com Git?",
-    options: ["CodeDeploy", "CodeCommit", "CodePipeline", "ECS"],
-    answer: 1,
-    explanation: "O CodeCommit é um repositório Git seguro e gerenciado pela AWS.",
-    domain: 3
-  },
-  {
-    question: "Para que serve o Amazon RDS?",
+    question: "Qual serviço da AWS permite conectividade VPN segura entre sua rede local e a AWS?",
     options: [
-      "Gerenciar redes privadas",
-      "Gerenciar bancos de dados relacionais",
-      "Executar containers em larga escala",
-      "Monitorar usuários IAM"
+      "VPC Peering",
+      "NAT Gateway",
+      "AWS Direct Connect",
+      "Site-to-Site VPN"
+    ],
+    answer: 3,
+    explanation: "O Site-to-Site VPN conecta seu data center local de forma segura à AWS usando túneis IPsec.",
+    domain: 2
+  },
+  {
+    question: "Qual das opções descreve melhor o AWS Free Tier?",
+    options: [
+      "Uso ilimitado de qualquer serviço AWS gratuitamente.",
+      "Período de 12 meses com acesso a serviços específicos dentro de limites de uso.",
+      "Créditos únicos para qualquer recurso AWS.",
+      "Armazenamento S3 e uso de EC2 sempre gratuitos."
     ],
     answer: 1,
-    explanation: "O Amazon RDS fornece bancos de dados como MySQL, PostgreSQL, Oracle e SQL Server de forma gerenciada.",
-    domain: 3
+    explanation: "O Free Tier oferece acesso limitado a alguns serviços por 12 meses com limites de uso (ex: 750h EC2, 5GB S3).",
+    domain: 2
   },
   {
-    question: "Para que serve o AWS Auto Scaling?",
+    question: "Qual é o propósito do AWS Artifact?",
     options: [
-      "Monitorar logs em tempo real",
-      "Gerar relatórios de faturamento",
-      "Ajustar automaticamente a capacidade de instâncias EC2",
-      "Criar políticas de acesso IAM"
+      "Gerenciar instâncias EC2",
+      "Monitorar uso da AWS",
+      "Disponibilizar relatórios de conformidade e certificações",
+      "Acompanhar eventos de infraestrutura"
     ],
     answer: 2,
-    explanation: "O Auto Scaling ajusta automaticamente a quantidade de instâncias com base na demanda.",
+    explanation: "O Artifact fornece documentos de conformidade sob demanda como relatórios SOC, certificações ISO e atestados PCI.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço ajuda a proteger aplicações contra ataques DDoS na camada de rede?",
+    options: [
+      "AWS WAF",
+      "AWS GuardDuty",
+      "AWS Inspector",
+      "AWS Shield"
+    ],
+    answer: 3,
+    explanation: "O AWS Shield Standard fornece proteção DDoS sem custo adicional; o Shield Advanced oferece resposta aprimorada.",
+    domain: 2
+  },
+  {
+    question: "Qual dos seguintes é um banco de dados NoSQL chave-valor e de documentos da AWS?",
+    options: [
+      "Amazon RDS",
+      "Amazon Neptune",
+      "Amazon DynamoDB",
+      "Amazon Redshift"
+    ],
+    answer: 2,
+    explanation: "O DynamoDB é um banco NoSQL totalmente gerenciado, com alta performance e escalabilidade automática.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço AWS coleta automaticamente e consolida logs e métricas de múltiplos serviços?",
+    options: [
+      "Amazon Inspector",
+      "AWS X-Ray",
+      "Amazon CloudWatch",
+      "AWS Glue"
+    ],
+    answer: 2,
+    explanation: "O CloudWatch agrega logs e métricas de recursos AWS, permite alarmes e dashboards de monitoramento.",
+    domain: 2
+  },
+  {
+    question: "Qual das opções descreve o Amazon Redshift?",
+    options: [
+      "Cache em memória",
+      "Banco de dados NoSQL",
+      "Armazém de dados escalável",
+      "API Gateway serverless"
+    ],
+    answer: 2,
+    explanation: "O Redshift é um data warehouse em escala petabyte para análises OLAP e workloads de relatórios.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço é ideal para roteamento baseado em conteúdo, terminação SSL e distribuição de tráfego HTTP?",
+    options: [
+      "Amazon Route 53",
+      "AWS Global Accelerator",
+      "Network Load Balancer",
+      "Application Load Balancer"
+    ],
+    answer: 3,
+    explanation: "O ALB opera na camada 7 (HTTP/HTTPS) e faz roteamento baseado no conteúdo de requisições.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço ajuda a detectar configurações de segurança mal configuradas como buckets S3 abertos?",
+    options: [
+      "Amazon CloudWatch",
+      "AWS GuardDuty",
+      "AWS Trusted Advisor",
+      "AWS Shield"
+    ],
+    answer: 2,
+    explanation: "O Trusted Advisor executa verificações de melhores práticas e alerta sobre recursos expostos como buckets públicos.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço permite criar e gerenciar segredos como credenciais de banco de dados de forma segura?",
+    options: [
+      "Amazon KMS",
+      "AWS IAM",
+      "AWS Secrets Manager",
+      "AWS Config"
+    ],
+    answer: 2,
+    explanation: "O Secrets Manager armazena e rotaciona segredos como senhas e chaves de API, integrando com outros serviços AWS.",
+    domain: 2
+  },
+  {
+    question: "Qual é a função principal do AWS Identity and Access Management (IAM)?",
+    options: [
+      "Criptografar dados em repouso",
+      "Gerenciar relatórios de faturamento",
+      "Definir permissões e controle de acesso a serviços AWS",
+      "Lançar recursos em nuvem automaticamente"
+    ],
+    answer: 2,
+    explanation: "O IAM controla quem pode acessar quais recursos e serviços AWS, usando usuários, grupos e políticas.",
+    domain: 2
+  },
+  {
+    question: "Qual é um benefício de usar serviços gerenciados como Amazon RDS ou AWS Lambda?",
+    options: [
+      "Você precisa gerenciar patches de servidor",
+      "Reduz a necessidade de overhead operacional",
+      "Maior custo por falta de controle",
+      "Tempo de configuração mais longo"
+    ],
+    answer: 1,
+    explanation: "Serviços gerenciados reduzem tarefas operacionais como manutenção de servidores, backups e escalabilidade.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço AWS permite monitorar limites e uso de recursos entre contas?",
+    options: [
+      "AWS Trusted Advisor",
+      "Amazon CloudWatch",
+      "AWS Config",
+      "AWS Budgets"
+    ],
+    answer: 0,
+    explanation: "O Trusted Advisor monitora melhores práticas, incluindo verificação de limites de serviço, segurança e custos.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço AWS permite criar dashboards interativos com dados armazenados na AWS?",
+    options: [
+      "Amazon Athena",
+      "AWS Glue",
+      "Amazon QuickSight",
+      "AWS Data Pipeline"
+    ],
+    answer: 2,
+    explanation: "O QuickSight é uma ferramenta de BI para criar relatórios e painéis interativos com dados da AWS.",
+    domain: 2
+  },
+  {
+    question: "Qual plano de suporte AWS é mais adequado para produção, com suporte 24/7 a engenheiros, mas sem TAM?",
+    options: [
+      "Basic",
+      "Developer",
+      "Business",
+      "Enterprise"
+    ],
+    answer: 2,
+    explanation: "O Business Support inclui suporte técnico 24/7, mas não oferece um Gerente de Conta Técnica (TAM).",
+    domain: 2
+  },
+  {
+    question: "Qual é o principal objetivo do AWS Direct Connect?",
+    options: [
+      "Resolver DNS de alta performance",
+      "Conectar AWS a localizações de borda",
+      "Fornecer conexão de rede privada dedicada entre AWS e data centers on-premises",
+      "Oferecer VPN segura via Internet pública"
+    ],
+    answer: 2,
+    explanation: "O Direct Connect estabelece conexão privada, de alta performance e baixa latência entre seu data center e a AWS.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço AWS ajuda a detectar configurações de segurança incorretas como credenciais expostas?",
+    options: [
+      "Amazon CloudWatch",
+      "AWS GuardDuty",
+      "AWS Trusted Advisor",
+      "AWS Shield"
+    ],
+    answer: 2,
+    explanation: "O Trusted Advisor executa verificações de melhores práticas e alerta sobre credenciais expostas ou buckets abertos.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço AWS permite infraestrutura de desktop virtual para que funcionários remotos acessem ambientes de trabalho?",
+    options: [
+      "Amazon AppStream 2.0",
+      "Amazon EC2",
+      "Amazon WorkSpaces",
+      "AWS Lambda"
+    ],
+    answer: 2,
+    explanation: "O WorkSpaces oferece ambientes de desktop gerenciados e persistentes para equipes remotas.",
+    domain: 2
+  },
+  {
+    question: "Uma empresa quer analisar o fluxo de tráfego entre instâncias EC2 e identificar conexões inesperadas. Qual ferramenta usar?",
+    options: [
+      "Amazon CloudWatch",
+      "AWS Config",
+      "VPC Flow Logs",
+      "AWS CloudTrail"
+    ],
+    answer: 2,
+    explanation: "Os VPC Flow Logs registram informações sobre o tráfego IP dentro das interfaces de rede da VPC.",
+    domain: 2
+  },
+  {
+    question: "Qual é o propósito de ativar a Autenticação Multifator (MFA) em uma conta AWS?",
+    options: [
+      "Criptografar todos os dados armazenados automaticamente",
+      "Restringir acesso a regiões específicas",
+      "Adicionar uma segunda camada de segurança no login",
+      "Prevenir ataques DDoS"
+    ],
+    answer: 2,
+    explanation: "O MFA exige uma verificação adicional além da senha, fortalecendo a segurança do login.",
+    domain: 2
+  },
+  {
+    question: "Uma empresa armazena backups no S3 mas quer movê-los automaticamente para uma classe de armazenamento mais barata após 30 dias. O que usar?",
+    options: [
+      "Object Lock",
+      "S3 Access Analyzer",
+      "S3 Versioning",
+      "S3 Lifecycle Policy"
+    ],
+    answer: 3,
+    explanation: "A S3 Lifecycle Policy automatiza a movimentação de objetos entre classes com base em regras de retenção.",
+    domain: 2
+  },
+  {
+    question: "Qual plano de suporte AWS inclui orientação arquitetônica individual através de um Gerente de Conta Técnica (TAM)?",
+    options: [
+      "Basic",
+      "Developer",
+      "Business",
+      "Enterprise"
+    ],
+    answer: 3,
+    explanation: "O plano Enterprise Support oferece um TAM dedicado para suporte estratégico e revisões de arquitetura.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço AWS detecta ameaças maliciosas e comportamentos não autorizados usando aprendizado de máquina?",
+    options: [
+      "AWS WAF",
+      "Amazon GuardDuty",
+      "AWS Config",
+      "AWS Artifact"
+    ],
+    answer: 1,
+    explanation: "O GuardDuty usa ML e fontes de dados integradas para identificar atividades suspeitas em ambientes AWS.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço fornece proteção contra DDoS em nível de rede para aplicações executando na AWS?",
+    options: [
+      "AWS Shield",
+      "AWS WAF",
+      "AWS Firewall Manager",
+      "AWS Secrets Manager"
+    ],
+    answer: 0,
+    explanation: "O AWS Shield Standard protege contra ataques DDoS na camada de rede e transporte, incluído em todas as contas AWS.",
+    domain: 2
+  },
+  {
+    question: "Qual serviço AWS é uma plataforma serverless para implantar e gerenciar aplicações containerizadas?",
+    options: [
+      "Amazon EC2",
+      "Amazon ECS com tipo de execução EC2",
+      "AWS Fargate",
+      "Amazon EKS"
+    ],
+    answer: 2,
+    explanation: "O Fargate é um mecanismo serverless para containers que dispensa provisionar e gerenciar EC2. Funciona com ECS ou EKS.",
     domain: 3
   },
   {
-    question: "Qual ferramenta da AWS permite estimar custos antes de usar os serviços?",
+    question: "Uma startup quer minimizar custos ao testar uma aplicação web que pode ser interrompida sem grandes problemas. Qual modelo EC2 é ideal?",
     options: [
-      "Billing Console",
-      "Trusted Advisor",
+      "Instâncias Reservadas",
+      "Instâncias Sob Demanda",
+      "Hosts Dedicados",
+      "Instâncias Spot"
+    ],
+    answer: 3,
+    explanation: "Instâncias Spot oferecem até 90% de economia usando capacidade ociosa da AWS, podendo ser interrompidas a qualquer momento.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS permite consultas SQL diretamente em dados no S3 sem carregá-los para um banco?",
+    options: [
+      "Amazon Redshift",
+      "Amazon Athena",
+      "AWS Glue",
+      "Amazon RDS"
+    ],
+    answer: 1,
+    explanation: "O Athena é um serviço serverless que executa consultas SQL direto no S3 usando sintaxe SQL padrão.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS monitora métricas como CPU e memória e permite alarmes com base em limites?",
+    options: [
+      "AWS Config",
+      "Amazon Inspector",
+      "Amazon CloudWatch",
+      "AWS CloudTrail"
+    ],
+    answer: 2,
+    explanation: "O CloudWatch coleta métricas e logs dos recursos AWS, permitindo criar dashboards e alarmes.",
+    domain: 3
+  },
+  {
+    question: "Qual é a principal função do AWS Organizations?",
+    options: [
+      "Hospedar aplicações",
+      "Gerenciar faturamento e aplicar políticas em múltiplas contas AWS",
+      "Configurar permissões IAM para usuários",
+      "Lançar instâncias EC2 automaticamente"
+    ],
+    answer: 1,
+    explanation: "O Organizations permite gerenciar múltiplas contas, aplicar Service Control Policies e consolidar faturamento.",
+    domain: 3
+  },
+  {
+    question: "Qual é a forma recomendada de gerenciar acesso programático para uma aplicação web em EC2?",
+    options: [
+      "Armazenar credenciais no user data da EC2",
+      "Codificar chaves de acesso diretamente na aplicação",
+      "Anexar uma IAM Role à instância EC2",
+      "Armazenar credenciais em um arquivo texto"
+    ],
+    answer: 2,
+    explanation: "Roles concedem credenciais temporárias seguras para aplicações em EC2, eliminando credenciais fixas.",
+    domain: 3
+  },
+  {
+    question: "Qual plano de suporte inclui AWS Infrastructure Event Management (IEM) para suporte em grandes lançamentos?",
+    options: [
+      "Basic",
+      "Developer",
+      "Business",
+      "Enterprise"
+    ],
+    answer: 3,
+    explanation: "O Enterprise Support oferece IEM, assistência da AWS em eventos de alto impacto como lançamentos.",
+    domain: 3
+  },
+  {
+    question: "Um cliente precisa de armazenamento temporário que se perca quando a instância terminar. Qual usar?",
+    options: [
+      "Amazon S3",
+      "Instance Store",
+      "Amazon EBS",
+      "AWS Storage Gateway"
+    ],
+    answer: 1,
+    explanation: "O Instance Store fornece armazenamento em bloco fisicamente anexado à instância, que é perdido ao término.",
+    domain: 3
+  },
+  {
+    question: "Para que tipo de armazenamento o Amazon EBS é mais indicado?",
+    options: [
+      "Arquivos em grande escala",
+      "Armazenamento baseado em objetos",
+      "Volumes de boot de VMs e bancos de dados",
+      "Hospedagem de sites estáticos"
+    ],
+    answer: 2,
+    explanation: "O EBS fornece armazenamento em bloco para instâncias EC2, ideal para discos de SO e bancos de dados.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS permite definir permissões baseadas em políticas e papéis de usuário?",
+    options: [
+      "AWS Systems Manager",
+      "AWS IAM",
+      "Amazon VPC",
+      "AWS KMS"
+    ],
+    answer: 1,
+    explanation: "O IAM gerencia usuários, grupos e roles com políticas para controlar acesso a recursos AWS.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço de armazenamento AWS é mais adequado para arquivar dados raramente acessados e com tolerância a longos tempos de recuperação?",
+    options: [
+      "Amazon EBS",
+      "Amazon S3 Standard",
+      "Amazon S3 Glacier Deep Archive",
+      "Amazon EFS"
+    ],
+    answer: 2,
+    explanation: "O Glacier Deep Archive é ideal para dados raros, com recuperação de até 12 horas a um custo muito baixo.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS é otimizado para OLAP (análise) e workloads de relatórios em larga escala?",
+    options: [
+      "Amazon Aurora",
+      "Amazon RDS",
+      "Amazon Redshift",
+      "Amazon Neptune"
+    ],
+    answer: 2,
+    explanation: "O Redshift é um data warehouse otimizado para consultas analíticas complexas e processamento em grande escala.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS permite arquiteturas orientadas a eventos roteando eventos em tempo real de fontes para destinos?",
+    options: [
+      "AWS CloudFormation",
+      "Amazon EventBridge",
+      "AWS CloudTrail",
+      "AWS Glue"
+    ],
+    answer: 1,
+    explanation: "O EventBridge é um barramento de eventos serverless que roteia eventos de serviços AWS, SaaS ou apps customizados para destinos.",
+    domain: 3
+  },
+  {
+    question: "Uma empresa quer que um usuário IAM tenha permissão apenas para visualizar informações de faturamento. Qual política IAM deve ser aplicada?",
+    options: [
+      "FullAdministrator",
+      "AmazonEC2FullAccess",
+      "ViewBilling",
+      "AmazonS3ReadOnlyAccess"
+    ],
+    answer: 2,
+    explanation: "A política gerenciada ViewBilling concede acesso somente leitura a dados de faturamento e gerenciamento de custos.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS fornece clusters Kubernetes gerenciados?",
+    options: [
+      "Amazon ECS",
+      "AWS Batch",
+      "AWS Fargate",
+      "Amazon EKS"
+    ],
+    answer: 3,
+    explanation: "O Amazon EKS permite executar clusters Kubernetes gerenciados, sem gerenciar o plano de controle manualmente.",
+    domain: 3
+  },
+  {
+    question: "Uma empresa quer armazenar sessões de usuários com baixa latência e alta velocidade de leitura. Qual serviço é ideal?",
+    options: [
+      "Amazon RDS",
+      "Amazon DynamoDB",
+      "Amazon Redshift",
+      "Amazon ElastiCache"
+    ],
+    answer: 3,
+    explanation: "O ElastiCache é um cache em memória gerenciado (Redis/Memcached) para leituras rápidas, ideal para sessões de usuário.",
+    domain: 3
+  },
+  {
+    question: "Qual tipo de endereço IP é atribuído a recursos em uma subnet privada sem acesso direto à internet?",
+    options: [
+      "Elastic IP",
+      "IPv6",
+      "IP público",
+      "IP privado"
+    ],
+    answer: 3,
+    explanation: "Recursos em subnets privadas recebem IPs privados, sem exposição direta à internet pública.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS armazena e entrega conteúdo web estático, como arquivos HTML e imagens?",
+    options: [
+      "Amazon S3",
+      "Amazon EC2",
+      "Amazon RDS",
+      "AWS WAF"
+    ],
+    answer: 0,
+    explanation: "O Amazon S3 pode hospedar sites estáticos e armazenar arquivos públicos como HTML, CSS, JS e imagens.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS oferece ambiente gerenciado para criar, treinar e implantar modelos de Machine Learning?",
+    options: [
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon SageMaker",
+      "Amazon Lex"
+    ],
+    answer: 2,
+    explanation: "O SageMaker fornece todo o fluxo de trabalho ML, do desenvolvimento ao treinamento e deploy de modelos.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS permite criar, gerenciar e emitir certificados SSL/TLS para sites seguros?",
+    options: [
+      "AWS KMS",
+      "AWS Certificate Manager (ACM)",
+      "AWS Shield",
+      "AWS Secrets Manager"
+    ],
+    answer: 1,
+    explanation: "O ACM emite e gerencia certificados SSL/TLS, usados para criptografar tráfego HTTPS em sites e apps.",
+    domain: 3
+  },
+  {
+    question: "Qual ferramenta AWS permite prever custos, visualizar tendências de gastos e aplicar filtros por serviço ou contas vinculadas?",
+    options: [
+      "AWS Budgets",
+      "AWS Billing Dashboard",
+      "AWS Cost Explorer",
+      "AWS Pricing Calculator"
+    ],
+    answer: 2,
+    explanation: "O Cost Explorer detalha custos, exibe tendências e permite filtrar dados por serviço, tag ou conta.",
+    domain: 3
+  },
+  {
+    question: "Uma equipe quer usar Infraestrutura como Código para criar ambientes consistentes em dev, teste e produção. Qual usar?",
+    options: [
+      "AWS Systems Manager",
+      "AWS CloudFormation",
+      "AWS CloudTrail",
+      "Amazon EventBridge"
+    ],
+    answer: 1,
+    explanation: "O CloudFormation cria e provisiona recursos AWS usando templates em YAML/JSON, garantindo ambientes consistentes.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS detecta e protege aplicações web contra exploits comuns como SQL Injection e XSS?",
+    options: [
+      "AWS Shield",
+      "AWS WAF",
+      "AWS Inspector",
+      "AWS IAM"
+    ],
+    answer: 1,
+    explanation: "O AWS WAF protege aplicações web de exploits comuns como injeções SQL e cross-site scripting.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS permite gerenciar acesso centralizado a múltiplas contas e apps com SSO?",
+    options: [
+      "AWS IAM",
+      "AWS Directory Service",
+      "IAM Identity Center",
+      "Amazon Cognito"
+    ],
+    answer: 2,
+    explanation: "O IAM Identity Center (antigo AWS SSO) gerencia single sign-on para contas e apps AWS.",
+    domain: 3
+  },
+  {
+    question: "Qual descrição corresponde às Instâncias Spot do Amazon EC2?",
+    options: [
+      "Reservadas para uso prolongado com preço fixo",
+      "Acesso à capacidade ociosa com preço reduzido",
+      "Hardware isolado para compliance",
+      "Sempre executam sem interrupção"
+    ],
+    answer: 1,
+    explanation: "Instâncias Spot usam capacidade EC2 ociosa com grande economia, mas podem ser interrompidas.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS é usado para provisionar e gerenciar desktops virtuais Windows ou Linux na nuvem?",
+    options: [
+      "Amazon EC2",
+      "Amazon WorkSpaces",
+      "Amazon AppStream 2.0",
+      "AWS Systems Manager"
+    ],
+    answer: 1,
+    explanation: "O WorkSpaces é um serviço DaaS (Desktop-as-a-Service) gerenciado para ambientes virtuais persistentes.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS integra dispositivos IoT à nuvem de forma segura?",
+    options: [
+      "AWS Greengrass",
+      "AWS IoT Core",
+      "AWS Lambda",
+      "AWS Systems Manager"
+    ],
+    answer: 1,
+    explanation: "O IoT Core conecta dispositivos IoT com segurança, permitindo processamento de dados em tempo real.",
+    domain: 3
+  },
+  {
+    question: "Para que serve o Amazon CloudWatch Logs?",
+    options: [
+      "Armazenar snapshots de volumes EBS",
+      "Registrar atividade de API entre serviços",
+      "Monitorar e armazenar logs de aplicações e recursos AWS",
+      "Detectar ataques DDoS automaticamente"
+    ],
+    answer: 2,
+    explanation: "O CloudWatch Logs coleta logs de serviços AWS e aplicações customizadas para monitoramento em tempo real.",
+    domain: 3
+  },
+  {
+    question: "Qual AWS service ajuda a criptografar todos os dados armazenados automaticamente em buckets S3?",
+    options: [
+      "S3 Lifecycle",
+      "Server-Side Encryption",
+      "S3 Transfer Acceleration",
+      "Bucket Versioning"
+    ],
+    answer: 1,
+    explanation: "A criptografia do lado do servidor (SSE) garante que objetos sejam salvos criptografados automaticamente no S3.",
+    domain: 3
+  },
+  {
+    question: "Qual solução de armazenamento é recomendada para arquivos frequentemente acessados no S3?",
+    options: [
+      "S3 Glacier",
+      "S3 One Zone-IA",
+      "S3 Standard",
+      "S3 Glacier Deep Archive"
+    ],
+    answer: 2,
+    explanation: "O S3 Standard é otimizado para dados de acesso frequente, com baixa latência e alta durabilidade.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS ajuda desenvolvedores a gerenciar tráfego de APIs, criar cache e publicar APIs em escala?",
+    options: [
+      "AWS Lambda",
+      "Amazon CloudFront",
+      "Amazon API Gateway",
+      "AWS Direct Connect"
+    ],
+    answer: 2,
+    explanation: "O API Gateway gerencia APIs, cacheia requisições e escala chamadas de API de forma segura.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS oferece VPS pré-configurados com gerenciamento e preço simplificados?",
+    options: [
+      "Amazon EC2",
+      "Amazon Lightsail",
+      "AWS Fargate",
+      "Amazon EKS"
+    ],
+    answer: 1,
+    explanation: "O Lightsail fornece instâncias VPS simples com preço fixo e stacks de desenvolvimento prontos.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS é um banco de dados em grafo para modelar relações entre dados altamente conectados?",
+    options: [
+      "Amazon Neptune",
+      "Amazon Redshift",
+      "Amazon Aurora",
+      "Amazon DynamoDB"
+    ],
+    answer: 0,
+    explanation: "O Neptune é um banco de dados de grafos gerenciado, ideal para relacionamentos complexos e conexões entre dados.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS faz rastreamento de nível de código em apps para identificar gargalos de desempenho?",
+    options: [
+      "AWS Inspector",
+      "AWS CloudTrail",
+      "AWS X-Ray",
+      "AWS Config"
+    ],
+    answer: 2,
+    explanation: "O X-Ray rastreia requisições entre serviços, identifica latência e ajuda a depurar aplicações distribuídas.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS otimiza custos movendo objetos entre tiers de acesso com base em uso?",
+    options: [
+      "Transfer Acceleration",
+      "Replicação Multi-Região",
+      "S3 Intelligent-Tiering",
+      "Bloqueio de IP público"
+    ],
+    answer: 2,
+    explanation: "O S3 Intelligent-Tiering alterna objetos entre camadas de armazenamento, reduzindo custos automaticamente.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS é usado para mover grandes volumes de dados para a AWS usando dispositivos físicos?",
+    options: [
+      "AWS Direct Connect",
+      "AWS DataSync",
+      "AWS Snowball",
+      "AWS Glue"
+    ],
+    answer: 2,
+    explanation: "O Snowball é um dispositivo físico para transferir grandes quantidades de dados de forma segura quando a internet não é viável.",
+    domain: 3
+  },
+  {
+    question: "Qual serviço AWS permite executar e escalar aplicações containerizadas sem gerenciar EC2?",
+    options: [
+      "Amazon ECS com EC2",
+      "Amazon EC2 Auto Scaling",
+      "AWS Fargate",
+      "Amazon RDS"
+    ],
+    answer: 2,
+    explanation: "O Fargate é um motor serverless que executa containers sem precisar gerenciar a infraestrutura EC2.",
+    domain: 3
+  },
+  {
+    question: "Uma equipe quer automatizar implantações de infraestrutura em múltiplos ambientes com templates versionados. Qual serviço usar?",
+    options: [
+      "Amazon EC2",
+      "AWS Config",
+      "AWS CloudFormation",
+      "AWS Auto Scaling"
+    ],
+    answer: 2,
+    explanation: "O CloudFormation cria e gerencia recursos AWS usando arquivos declarativos YAML/JSON, garantindo ambientes consistentes.",
+    domain: 4
+  },
+  {
+    question: "Qual recurso AWS distribui tráfego automaticamente entre vários destinos em uma ou mais AZs para garantir alta disponibilidade?",
+    options: [
+      "NAT Gateway",
+      "Application Load Balancer",
+      "Security Group",
+      "Route Table"
+    ],
+    answer: 1,
+    explanation: "O ALB (Application Load Balancer) distribui tráfego HTTP/HTTPS em múltiplos destinos para alta disponibilidade e tolerância a falhas.",
+    domain: 4
+  },
+  {
+    question: "Qual ferramenta ajuda a estimar os custos mensais da AWS antes de implantar recursos?",
+    options: [
+      "AWS Budgets",
       "AWS Pricing Calculator",
-      "Cost Explorer"
-    ],
-    answer: 2,
-    explanation: "O Pricing Calculator ajuda a estimar os custos de serviços AWS com base em uso previsto.",
-    domain: 4
-  },
-  {
-    question: "Qual ferramenta envia alertas quando os custos ou uso ultrapassam um limite definido?",
-    options: ["CloudTrail", "Budgets", "Cost Explorer", "Billing Dashboard"],
-    answer: 1,
-    explanation: "O AWS Budgets permite definir alertas personalizados com base em uso ou gastos.",
-    domain: 4
-  },
-  {
-    question: "O que são instâncias reservadas na AWS?",
-    options: [
-      "Instâncias que iniciam automaticamente ao ligar o console",
-      "Instâncias com desconto ao assumir um compromisso de uso por 1 ou 3 anos",
-      "Instâncias exclusivas para clientes do plano Enterprise",
-      "Instâncias para uso interno apenas"
+      "AWS Cost Explorer",
+      "AWS Trusted Advisor"
     ],
     answer: 1,
-    explanation: "Instâncias reservadas oferecem descontos ao se comprometer com uso de longo prazo.",
+    explanation: "O Pricing Calculator gera estimativas de custo detalhadas com base em configurações e uso planejado.",
     domain: 4
   },
   {
-    question: "O que representa o modelo de cobrança 'pay-as-you-go' da AWS?",
+    question: "Qual serviço AWS aplica patching automático, backups e failover em bancos relacionais?",
     options: [
-      "Pagamento mensal fixo por todos os recursos",
-      "Pagamento adiantado com desconto",
-      "Pagamento apenas pelos recursos utilizados",
-      "Pagamento com base em número de contas na organização"
+      "Amazon EC2",
+      "Amazon Aurora",
+      "Amazon Redshift",
+      "Amazon RDS"
     ],
-    answer: 2,
-    explanation: "No modelo pay-as-you-go, você paga apenas pelo que usar, sem custos fixos.",
-    domain: 4
-  },
-  {
-    question: "Qual plano de suporte da AWS é gratuito?",
-    options: ["Basic", "Developer", "Business", "Enterprise"],
-    answer: 0,
-    explanation: "O plano Basic é gratuito e inclui acesso a documentação, whitepapers e fóruns.",
-    domain: 4
-  },
-  {
-    question: "Qual plano de suporte da AWS oferece um gerente técnico de conta (TAM)?",
-    options: ["Developer", "Basic", "Business", "Enterprise"],
     answer: 3,
-    explanation: "O plano Enterprise inclui um gerente técnico designado (TAM) para suporte dedicado.",
+    explanation: "O Amazon RDS gerencia bancos como MySQL, PostgreSQL, Oracle, com patching, backups e failover automáticos.",
     domain: 4
   },
   {
-    question: "Qual ferramenta ajuda a visualizar e analisar os gastos atuais com serviços AWS?",
-    options: ["Cost Explorer", "Budgets", "Config", "Billing Console"],
-    answer: 0,
-    explanation: "O Cost Explorer permite visualizar e detalhar seus custos por serviço e período.",
+    question: "Qual serviço permite registrar domínios personalizados diretamente na AWS?",
+    options: [
+      "Amazon CloudFront",
+      "Amazon Route 53",
+      "Amazon Lightsail",
+      "AWS Directory Service"
+    ],
+    answer: 1,
+    explanation: "O Route 53 registra, gerencia e roteia tráfego de domínios customizados com DNS escalável.",
+    domain: 4
+  },
+  {
+    question: "Qual serviço AWS centraliza o gerenciamento de contas e aplica políticas de controle de serviços (SCPs)?",
+    options: [
+      "AWS IAM",
+      "AWS Organizations",
+      "AWS Config",
+      "AWS Secrets Manager"
+    ],
+    answer: 1,
+    explanation: "O Organizations gerencia múltiplas contas AWS e aplica SCPs para restringir ações permitidas.",
+    domain: 4
+  },
+  {
+    question: "Qual serviço permite rastrear alterações de configuração de recursos AWS para garantir compliance?",
+    options: [
+      "AWS CloudTrail",
+      "Amazon CloudWatch",
+      "AWS Config",
+      "AWS Budgets"
+    ],
+    answer: 2,
+    explanation: "O AWS Config monitora e avalia mudanças de configuração em recursos, ajudando a manter compliance.",
+    domain: 4
+  },
+  {
+    question: "Qual é o benefício do AWS Auto Scaling?",
+    options: [
+      "Backup automático de volumes EBS",
+      "Patching automático de instâncias EC2",
+      "Escala automática de recursos computacionais conforme demanda",
+      "Rotas de rede redundantes entre Regiões"
+    ],
+    answer: 2,
+    explanation: "O Auto Scaling ajusta instâncias automaticamente para atender demanda, mantendo performance e otimizando custos.",
+    domain: 4
+  },
+  {
+    question: "Qual serviço AWS oferece instâncias VPS pré-configuradas com gerenciamento simplificado?",
+    options: [
+      "Amazon EC2",
+      "Amazon Lightsail",
+      "AWS Fargate",
+      "Amazon EKS"
+    ],
+    answer: 1,
+    explanation: "O Lightsail oferece VPS fáceis de gerenciar, com preço fixo e stacks prontos para desenvolvimento.",
+    domain: 4
+  },
+  {
+    question: "Como restringir o acesso a um bucket S3 para apenas um intervalo de IPs?",
+    options: [
+      "VPC Peering",
+      "IAM Roles",
+      "Bucket Policy",
+      "S3 Versioning"
+    ],
+    answer: 2,
+    explanation: "Bucket Policies aplicam controle detalhado de acesso, inclusive restrições por intervalo de IP.",
+    domain: 4
+  },
+  {
+    question: "Qual serviço AWS automatiza deploys de aplicativos sem gerenciar infraestrutura?",
+    options: [
+      "AWS Lambda",
+      "Amazon EC2",
+      "AWS Elastic Beanstalk",
+      "Amazon Lightsail"
+    ],
+    answer: 2,
+    explanation: "O Elastic Beanstalk gerencia provisionamento, balanceamento de carga, escalabilidade e monitoramento de apps automaticamente.",
+    domain: 4
+  },
+  {
+    question: "Qual ferramenta AWS permite definir limites de orçamento e receber alertas quando gastos os ultrapassam?",
+    options: [
+      "AWS Billing Console",
+      "AWS Cost Explorer",
+      "AWS Budgets",
+      "AWS Pricing Calculator"
+    ],
+    answer: 2,
+    explanation: "O Budgets define metas de custo e envia alertas por e-mail ou SNS quando ultrapassadas.",
     domain: 4
   }
-];
+]
 
 
     const domainWeights = { 1: 0.24, 2: 0.30, 3: 0.34, 4: 0.12 };
